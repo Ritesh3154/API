@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOG API</title>
+    <div id="img"></div>
+</head>
+
+<body>
+    <script>
+        async function dogAPI() {
+            const res = await fetch('https://dog.ceo/api/breeds/image/random')
+            console.log(res)
+            const dogData = await res.json()
+            console.log(dogData.message)
+            const result = dogData.message
+
+            const output = `
+            <img src="${result}" height="500" width="500"/>`
+
+            document.getElementById('img').innerHTML = output
+
+        }
+        dogAPI()
+    </script>
+</body>
+
+</html>

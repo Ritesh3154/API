@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="num">
+    <button onclick="randomDog()">click</button>
+    <div id="img"></div>
+    <script>
+        async function randomDog() {
+            const num = document.querySelector('#num').value
+            const res = await fetch(`https://dog.ceo/api/breeds/image/random/${num}`)
+            const data = await res.json()
+            console.log(data.message)
+            const result = data.message
+            console.log(result)
+            let output = ""
+            result.forEach((images) => {
+            output += `
+            
+            <img src="${images}" height="300" width="350">
+            `
+            });
+
+            document.querySelector('#img').innerHTML = output
+        }
+    </script>
+</body>
+
+</html>
